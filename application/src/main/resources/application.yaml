@@ -1,0 +1,42 @@
+# for local dev
+#POSTGRES_HOST: localhost
+#POSTGRES_PORT: 5432
+#POSTGRES_DB_NAME: test_database
+
+spring:
+  application:
+    name: application
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB_NAME}?useUnicode=true&serverTimezone=UTC
+    driver: org.postgresql.Driver
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    # initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+      cache:
+        use_query_cache: false
+        use_second_level_cache: false
+    properties:
+      hibernate:
+        connection:
+          charSet: UTF-8
+        hbm2ddl:
+          import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  http:
+    multipart:
+      max-file-size: 1500KB
+      max-request-size: 1500KB
+  main:
+    allow-bean-definition-overriding: true
+
+
+api:
+  rout: /api
+  cat:
+    rout: ${api}/cat
+
