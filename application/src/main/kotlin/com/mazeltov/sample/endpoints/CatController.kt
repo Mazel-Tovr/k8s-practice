@@ -26,4 +26,11 @@ class CatController {
         } ?: ResponseEntity("Cat $name not found", HttpStatus.NOT_FOUND)
     }
 
+    @GetMapping("\${api.cat.rout}")
+    fun getAll(): ResponseEntity<*> {
+        return catOperations.findAll().map { it.toDto() }.let {
+            ResponseEntity(it, HttpStatus.OK)
+        }
+    }
+
 }

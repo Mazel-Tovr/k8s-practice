@@ -1,7 +1,14 @@
 # for local dev
 #POSTGRES_HOST: localhost
 #POSTGRES_PORT: 5432
-#POSTGRES_DB_NAME: test_database
+#POSTGRES_DB_NAME: postgres
+#POSTGRES_USER: user
+#POSTGRES_PASSWORD: password
+
+server:
+  port: 8080
+  servlet:
+    context-path: /simple-app
 
 spring:
   application:
@@ -38,5 +45,5 @@ spring:
 api:
   rout: /api
   cat:
-    rout: ${api}/cat
+    rout: ${api.rout}/cat
 

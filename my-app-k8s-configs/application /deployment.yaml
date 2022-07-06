@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-test-app-deployment
+  labels:
+    app: my-test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-test-app
+  template:
+    metadata:
+      labels:
+        app: my-test-app
+    spec:
+      containers:
+        - name: my-test-app
+          image: cat
+          ports:
+            - containerPort: 8080
+          env:
+            - name: POSTGRES_DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: my-test-app-configmap
+                  key: database_name
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: my-test-app-configmap
+                  key: database_host
+            - name: POSTGRES_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: my-test-app-configmap
+                  key: database_port
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: my-test-project-secret
+                  key: postgres-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: my-test-project-secret
+                  key: postgres-password
