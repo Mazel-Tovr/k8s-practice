@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: my-test-app
-          image: cat
+          image: cat:0.0.1
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
           env:
@@ -36,12 +37,14 @@ spec:
                   name: my-test-app-configmap
                   key: database_port
             - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: my-test-project-secret
-                  key: postgres-user
+              value: user
+#              valueFrom:
+#                secretKeyRef:
+#                  name: my-test-project-secret
+#                  key: postgres-user
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: my-test-project-secret
-                  key: postgres-password
+              value: password
+#              valueFrom:
+#                secretKeyRef:
+#                  name: my-test-project-secret
+#                  key: postgres-password

@@ -14,14 +14,14 @@ spring:
   application:
     name: application
   datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB_NAME}?useUnicode=true&serverTimezone=UTC
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB_NAME}?useUnicode=true&serverTimezone=UTC&useSSL=false
     driver: org.postgresql.Driver
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
     # initialization-mode: always
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       show-sql: true
       cache:
         use_query_cache: false
