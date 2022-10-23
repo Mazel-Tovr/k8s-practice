@@ -46,4 +46,6 @@ api:
   rout: /api
   cat:
     rout: ${api.rout}/cat
+  env:
+    rout: ${api.rout}/env
 

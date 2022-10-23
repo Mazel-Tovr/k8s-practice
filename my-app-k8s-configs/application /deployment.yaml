@@ -36,6 +36,11 @@ spec:
                 configMapKeyRef:
                   name: my-test-app-configmap
                   key: database_port
+            - name: jasypt_key
+              valueFrom:
+                secretKeyRef:
+                  name: secret-segment-router.unver
+                  key: jasypt_key
             - name: POSTGRES_USER
               value: user
 #              valueFrom:

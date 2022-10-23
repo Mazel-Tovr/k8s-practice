@@ -21,6 +21,10 @@ noArg {
     annotation("com.mazeltov.sample.util.NoArg")
 }
 
+springBoot {
+    mainClass.set("com.mazeltov.sample.SampleApplicationKt")
+}
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
